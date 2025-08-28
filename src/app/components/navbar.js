@@ -6,6 +6,7 @@ import {User,ShoppingCart, BugIcon} from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { X } from "lucide-react";
 
 
 export default function Navbar(){
@@ -43,10 +44,16 @@ export default function Navbar(){
 
 
         <div className="flex space-x-4">
-            <User/>
-          <button href="/login" className="text-blue-600 " onClick={() => setShowLogin(true)}>Login</button>
-          <ShoppingCart/>
-          <Link href="/cart" >Cart</Link>
+            
+          <button href="/login" className="text-blue-600  flex cursor-pointer" onClick={() => setShowLogin(true)}>
+           <User className="mr-2"/>
+           Login
+          </button>
+         
+          <Link href="/cart"  className="flex">
+           <ShoppingCart className="mr-2"/>
+            Cart
+          </Link>
 
           {/* {modal} */}
           {showLogin &&  <div className="fixed inset-0 bg-black opacity-80 flex justify-center items-center z-50">
@@ -55,7 +62,8 @@ export default function Navbar(){
                   onClick={() => setShowLogin(false)}
                   className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
                  >
-                     ✕
+                     
+                     <X width={25} height={25}/>
                   </button>
                   <h2 className="text-2xl font-semibold mb-4">Welcome Back</h2>
                   <p className="mb-2">Sign in or create an account</p>
