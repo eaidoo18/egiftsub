@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import LoginModal from "@/components/loginModal";
 
 export default function Navbar() {
-  const [showLogin, setShowLogin] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const[modalType, setModalType] = useState("login");
 
   const navItems = [
     { title: 'Support', link: '/support' },
@@ -36,7 +37,9 @@ export default function Navbar() {
         <div className="flex space-x-4">
           <button
             className="text-blue-600 flex cursor-pointer"
-            onClick={() => setShowLogin(true)}
+            onClick={() => {setShowModal(true);
+              setModalType("login");
+            }}
           >
             <User className="mr-2" />
             Login
@@ -55,7 +58,13 @@ export default function Navbar() {
       </div>
 
       {/* ✅ Render Login Modal */}
-      {showLogin && <LoginModal onClose={() => setShowLogin(false)}/> }
+    {showModal && (
+        <LoginModal
+          type={modalType}
+          onClose={() => setShowModal(false)}
+          onSwitch={(type) => setModalType(type)}
+        />
+      )}
     </nav>
   );
 }
