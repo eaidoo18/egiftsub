@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function LoginModal({ type, onClose, onSwitch }) {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
-  const [fullname, setFullname] = useState("");
+  const [fullName, setFullname] = useState("");
   const [password, setPassword] = useState("");
   const [step, setStep] = useState(1);
   const [error, setError] = useState("");
@@ -55,7 +55,7 @@ export default function LoginModal({ type, onClose, onSwitch }) {
     const res = await fetch("/api/create-account", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullname, email, password }),
+      body: JSON.stringify({ fullName, email, password }),
     });
     const data = await res.json();
 
