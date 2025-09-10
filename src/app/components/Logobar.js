@@ -1,4 +1,3 @@
-
 "use client";
 import { motion } from "framer-motion";
 
@@ -11,15 +10,14 @@ export default function LogoBar() {
     "/assets/xbox.png",
     "/assets/steam.png",
     "/assets/GooglePlay.png",
-    "/assets/playstation.png"
-
-    
+    "/assets/playstation.png",
   ];
 
-const scrollingLogos = [...logos, ...logos];
+  
+  const scrollingLogos = [...logos, ...logos];
 
   return (
-    <div className="overflow-hidden  bg-gray-50 py-6 px-20">
+    <div className="overflow-hidden bg-gray-50 py-4 md:py-6 px-4 md:px-20">
       <motion.div
         className="flex"
         initial={{ x: 0 }}
@@ -27,11 +25,11 @@ const scrollingLogos = [...logos, ...logos];
         transition={{ duration: 20, ease: "linear", repeat: Infinity }}
       >
         {scrollingLogos.map((logo, i) => (
-          <div key={i} className="flex-shrink-0 px-8">
+          <div key={i} className="flex-shrink-0 px-4 md:px-8">
             <img
               src={logo}
               alt="brand logo"
-              className="h-12 w-auto object-contain"
+              className="h-8 md:h-12 w-auto object-contain"
             />
           </div>
         ))}
